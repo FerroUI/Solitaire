@@ -764,7 +764,14 @@ fn pile_name(pile: Pile) -> String {
         Pile::Tableau(i) => format!("column {}", i + 1),
         Pile::Foundation(i) => format!(
             "the {} foundation",
-            CardSuit::ALL.get(i).map_or("completed run", |s| s.symbol())
+            CardSuit::ALL.get(i).map_or("completed run", |s| match s {
+                // Names, not the suit characters: the status text has no font for those in
+                // the browser.
+                CardSuit::Hearts => "hearts",
+                CardSuit::Clubs => "clubs",
+                CardSuit::Diamonds => "diamonds",
+                CardSuit::Spades => "spades",
+            })
         ),
         Pile::Cell(i) => format!("free cell {}", i + 1),
         Pile::Stock => "the stock".into(),
