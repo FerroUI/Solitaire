@@ -99,9 +99,9 @@ pub fn create_main_view() -> Ref<Control> {
     let casino = CasinoView::new(PersistentState::default_path());
     let table = Border::new();
     table.set_background(Some(brush("#116336")));
-    table.set_child(Some(Control::boxed(casino.root.clone())));
+    table.set_child(&casino.root);
     casino.attach_to_view();
-    Control::boxed(table)
+    table.upcast()
 }
 #[cfg(feature = "desktop")]
 pub fn run() -> std::process::ExitCode {
