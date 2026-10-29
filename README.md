@@ -1,6 +1,7 @@
 # Ferro Solitaire
 
-Klondike, FreeCell and Spider Solitaire, written in Rust with [FerroUI](https://github.com/wieslawsoltes/FerroUI).
+Klondike, FreeCell and Spider Solitaire built with [FerroUI](https://github.com/wieslawsoltes/FerroUI), a Rust
+UI framework. It runs natively on the desktop and in the browser (WebAssembly).
 The game is a port of an open-source .NET Solitaire application (see [NOTICE.md](NOTICE.md)): its rules,
 XAML pages, vector playing cards, title artwork and fonts are retained, with animated card movement, timed
 dealing, a startup fade and animated gold trays.
