@@ -8,7 +8,7 @@ dealing, a startup fade and animated gold trays.
 
 **Play it in the browser:** https://ferroui.github.io/Solitaire/
 
-![Klondike](docs/images/Klondike.png)
+![A Klondike deal in the browser](docs/images/klondike-browser.png)
 
 ## Repository layout
 
