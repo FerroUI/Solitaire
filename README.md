@@ -72,7 +72,7 @@ overrides it). Invalid or unsupported saves are reported in the status bar and a
 
 ```sh
 cargo test --locked -p ferro-solitaire --no-default-features
-cargo test --locked -p ferro-solitaire --features headless --test ui --test animations
+cargo test --locked -p ferro-solitaire --features headless --test ui --test animations --test pile_marks
 ```
 
 The rule tests cover deals, suit distributions, legal runs, foundations, stock recycling, scoring,

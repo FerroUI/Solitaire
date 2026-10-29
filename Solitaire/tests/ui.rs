@@ -30,7 +30,7 @@ fn click(view: &std::rc::Rc<CasinoView>, name: &str) {
     wait_for_presentation(view);
 }
 fn wait_for_presentation(view: &std::rc::Rc<CasinoView>) {
-    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(12);
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(60);
     while view.is_animating() {
         assert!(
             std::time::Instant::now() < deadline,

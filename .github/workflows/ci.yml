@@ -26,7 +26,7 @@ jobs:
       # the headless platform with the real XAML loader and Skia.
       test: |
         -p ferro-solitaire --no-default-features
-        -p ferro-solitaire --features headless --test ui --test animations
+        -p ferro-solitaire --features headless --test ui --test animations --test pile_marks
       check: |
         -p ferro-solitaire --bins
       browser-package: ferro-solitaire-browser
