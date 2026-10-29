@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+    <meta name="theme-color" content="#116336">
+    <meta name="description" content="Klondike, FreeCell and Spider Solitaire built with FerroUI and Rust, running as WebAssembly.">
+    <title>Ferro Solitaire</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+    <main id="out" aria-label="Ferro Solitaire">
+        <div class="ferroui-splash" role="status">
+            <img src="./favicon.svg" width="64" height="64" alt="">
+            <h1>Ferro Solitaire</h1>
+            <p>Klondike, FreeCell and Spider</p>
+            <span class="loading-line" aria-hidden="true"></span>
+        </div>
+    </main>
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

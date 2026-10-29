@@ -1,0 +1,32 @@
+name: CI
+
+# Build, tests, the browser site and its GitHub Pages deployment, with the shared workflow of
+# FerroUI (FerroUI/docs/apps.md).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  app:
+    uses: wieslawsoltes/FerroUI/.github/workflows/app.yml@browser/external-workspace
+    with:
+      # The rules, persistence and presentation without the UI, then the UI and animation tests on
+      # the headless platform with the real XAML loader and Skia.
+      test: |
+        -p ferro-solitaire --no-default-features
+        -p ferro-solitaire --features headless --test ui --test animations
+      check: |
+        -p ferro-solitaire --bins
+      browser-package: ferro-solitaire-browser
