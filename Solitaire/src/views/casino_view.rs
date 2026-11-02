@@ -13,7 +13,7 @@ use ferroui::{
         controls::ResourceDictionary,
         input::{InputElement, Key, KeyModifiers},
         media::{DrawingImage, IImage},
-        reactive::IDisposable,
+        reactive::Subscription,
         threading::{DispatcherPriority, DispatcherTimer},
     },
     controls::{
@@ -47,9 +47,9 @@ pub struct CasinoView {
     pub page: RefCell<Option<Ref<UserControl>>>,
     artwork: Ref<ResourceDictionary>,
     dialog: Cell<DialogAction>,
-    timer: RefCell<Option<Rc<dyn IDisposable>>>,
+    timer: RefCell<Option<Subscription>>,
     presentation: RefCell<Option<VecDeque<PresentationFrame>>>,
-    presentation_timer: RefCell<Option<Rc<dyn IDisposable>>>,
+    presentation_timer: RefCell<Option<Subscription>>,
     presentation_generation: Cell<u64>,
 }
 impl CasinoView {
@@ -109,7 +109,7 @@ impl CasinoView {
             if let Some(timer) = this.timer.borrow_mut().take() {
                 timer.dispose();
             }
-        });
+        }).detach();
         let weak_window = window.downgrade();
         self.start_clock(Rc::downgrade(self), move || {
             weak_window.upgrade().map(|window| window.is_active())
@@ -380,7 +380,7 @@ impl CasinoView {
             },
             Duration::from_millis(16),
             DispatcherPriority::NORMAL,
-        );
+        ).detach();
         *self.page.borrow_mut() = Some(view);
         self.update_score();
         self.refresh_message();
