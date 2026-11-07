@@ -464,12 +464,10 @@ impl CasinoView {
                         ),
                     }
                 )));
-            let busy = self.is_animating();
-            view.get_control::<Button>("Undo")
-                .set_is_enabled(!busy && game.can_undo());
-            for name in ["NewGame", "Restart", "Hint", "AutoMove", "Deal"] {
-                view.get_control::<Button>(name).set_is_enabled(!busy);
-            }
+            // The toolbar stays enabled while cards animate: every action returns early while
+            // input is blocked (`input_blocked`), and disabling the buttons for the length of
+            // each move dimmed the whole toolbar on every click.
+            view.get_control::<Button>("Undo").set_is_enabled(game.can_undo());
         }
     }
     fn changed(self: &Rc<Self>) {
