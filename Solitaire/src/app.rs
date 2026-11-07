@@ -35,9 +35,8 @@ impl ApplicationImpl for App {
         );
         ferroui::base::media::FontManager::current().add_font_collection(std::rc::Rc::new(
             ferroui::base::media::fonts::EmbeddedFontCollection::new(
-                ferroui::base::utilities::Uri::absolute("fonts:Solitaire").expect("font key"),
-                ferroui::base::utilities::Uri::absolute("ferres://FerroSolitaire/Assets")
-                    .expect("font source"),
+                url::Url::parse("fonts:Solitaire").expect("font key"),
+                url::Url::parse("ferres://FerroSolitaire/Assets").expect("font source"),
             ),
         ));
         this.styles().add(FluentTheme::new().as_style());
