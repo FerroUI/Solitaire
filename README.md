@@ -6,7 +6,7 @@ The game is a port of an open-source .NET Solitaire application (see [NOTICE.md]
 XAML pages, vector playing cards, title artwork and fonts are retained, with animated card movement, timed
 dealing, a startup fade and animated gold trays.
 
-**Play it in the browser:** https://ferroui.github.io/Solitaire/
+**Play it in the browser:** https://ferroui.com/Solitaire/
 
 ![A Klondike deal in the browser](docs/images/klondike-browser.png)
 
